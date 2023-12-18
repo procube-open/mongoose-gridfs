@@ -659,7 +659,7 @@ GridFSBucket.prototype.readFile = function readFile(optns, done) {
  * bucket.deleteFile(_id, (error, results) => { ... });
  */
 GridFSBucket.prototype.deleteFile = function deleteFile(_id, done) {
-  this.delete(_id, function afterDelete(error) {
+  this.delete(_id).then((error) => {
     return done(error, _id);
   });
 };
