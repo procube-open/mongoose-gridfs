@@ -194,12 +194,12 @@ function createFileSchema(bucket) {
         return bucket.deleteFile(
           // eslint-disable-next-line no-underscore-dangle
           file._id,
-          function afterDeleteFile($error , id ) {
-            done($error, file);
+          function afterDeleteFile($error /*, id*/) {
+            if (done) done($error, file);
           }
         );
       })
-      .catch((error) => done(error));
+      .catch((error) => done ? done(error) : null);
   };
 
   /* statics */
